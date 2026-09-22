@@ -1,0 +1,25 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-std=c++17",
+                "-Wall",
+                "-g",
+                "-o",
+                "${workspaceFolder}/playlist",
+                "${workspaceFolder}/main.cpp",
+                "${workspaceFolder}/MusicPlaylist.cpp"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": ["$gcc"],
+            "detail": "Compiles main.cpp and MusicPlaylist.cpp together into the playlist program."
+        }
+    ]
+}
