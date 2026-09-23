@@ -2,7 +2,8 @@
 
 ## Setup
 
-1. One teammate creates a **new GitHub repository** for this project, named following the standard below, and adds the other teammate as a **collaborator**.
+1. One teammate goes to the starter repo — **[ONU-ECCS2671-FA2026/Project1-DLL](https://github.com/ONU-ECCS2671-FA2026/Project1-DLL)** — and clicks **Use this template → Create a new repository**. This copies all the starter files (including the hidden `.github/workflows` folder) into your own new repo automatically — no manual file uploads needed.
+Name the new repository following the standard below, set its visibility to **Private**, then add the other teammate as a **collaborator**.
 2. **Both** teammates add the instructor as a collaborator: `f-jahan@onu.edu`.
 3. Add all of the starter files to the repo and push them to `main`, keeping this folder structure:
    ```
