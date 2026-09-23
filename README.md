@@ -52,7 +52,7 @@ Memory:    M/N passing groups leak-free (ASan build)
 
 This is a self-check, not your final grade — it only covers whether your functions produce correct output and whether they leak memory. It does **not** check other things the rubric also grades, like unnecessary code or using the wrong kind of loop, so a full "8/8" with a clean memory line does not guarantee full credit. Use it to catch bugs early, then re-read the rubric before you submit.
 
-You can run the same checks locally at any time:
+You can run the same checks locally at any time **only if you have make installed**:
 
 ```
 make test        # functional correctness
@@ -69,19 +69,41 @@ make memcheck-verbose   # same, but built with ASan and showing full leak stack 
 ```
 
 ## Compiling
-
-```
-make
-./playlist
-```
-
-or directly:
-
-```
-g++ -std=c++17 -Wall -c main.cpp
-g++ -std=c++17 -Wall -c MusicPlaylist.cpp
-g++ -std=c++17 -Wall -o playlist main.o MusicPlaylist.o
-./playlist
-```
-
 The provided `main()` (in `main.cpp` — do not modify it) exercises both students' functions. You can comment out individual calls while you debug your own functions.
+### Running & debugging in VS Code
+
+The starter repo includes a `.vscode` folder with a build task and a debug configuration already set up, so you don't need to type g++ commands by hand.
+
+**⚠️ Don't use the plain ▶ "Run" button** that appears at the top-right of an open `.cpp` file (or via Code Runner). That button only compiles the *single file you have open* — since this project is split across `main.cpp` and `MusicPlaylist.cpp`, it will fail with "undefined reference" errors because it never sees the other file.
+
+**To build (compile both files together):**
+- Press **Ctrl+Shift+B**. This runs the "build" task defined in `.vscode/tasks.json`, which compiles `main.cpp` and `MusicPlaylist.cpp` together into a `playlist` program.
+
+**To run and debug (with breakpoints):**
+1. Open the **Run and Debug** panel (left sidebar — the ▶ icon with a bug).
+2. Make sure the dropdown at the top says **"Debug Playlist"**.
+3. Click the green ▶ (or press **F5**). This builds automatically first, then launches the program under the debugger — set breakpoints by clicking in the left margin next to a line number.
+
+**If debugging won't start:**
+- *"Could not find the task 'build'"* → `.vscode/tasks.json` is missing, or wasn't pulled locally yet. Pull the latest from GitHub (or re-clone) and check the file is there.
+- *Debugger requires `gdb`* (Windows) → if you installed Git for Windows / MinGW, `gdb` is usually included; if debugging (not building) fails specifically, you can still build with Ctrl+Shift+B and run `.\playlist.exe` from the terminal as a fallback.
+- If `Ctrl+Shift+B` still fails with a linker error, double-check `.vscode/tasks.json`'s `args` list includes **both** `main.cpp` and `MusicPlaylist.cpp` — a copy-paste when creating the file can sometimes drop a line.
+
+### Example output (starter code, before any functions are implemented)
+
+Running `./playlist` fresh from the starter files — before Student 1 or Student 2 have implemented anything — produces this. If your output looks like this, your build is working correctly; it just has nothing implemented yet:
+
+```
+--- Building the playlist ---
+Empty Play List
+
+--- Searching ---
+Song number of "Yellow": -1
+Song name at position 2: Empty Play List
+
+--- Deleting ---
+Empty Play List
+
+Total songs remaining: 0
+```
+
