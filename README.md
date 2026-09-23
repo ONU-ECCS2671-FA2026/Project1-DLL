@@ -65,7 +65,7 @@ Memory:    M/N passing groups leak-free (ASan build)
 
 This is a self-check, not your final grade — it only covers whether your functions produce correct output and whether they leak memory. It does **not** check other things the rubric also grades, like unnecessary code or using the wrong kind of loop, so a full "8/8" with a clean memory line does not guarantee full credit. Use it to catch bugs early, then re-read the rubric before you submit.
 
-You can run the same checks locally at any time:
+You can run the same checks locally at any time **only if you have make installed on your computer**:
 
 ```
 make test        # functional correctness
